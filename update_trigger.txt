@@ -1,0 +1,8 @@
+sql> create trigger loan_trigger after update of loanno on loan
+ for each row
+ begin
+ update borrower set loanno=:new.loanno where loanno=:old.loanno;
+ end;
+ /
+
+sql> update loan set loanno='l123' where loanno='l170';
